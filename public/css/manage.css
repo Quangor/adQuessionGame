@@ -1,0 +1,28 @@
+ul{
+	width:100%;}
+	
+	ul>li{
+		width:90%;
+		height:40px;
+		line-height:40px;
+		margin:10px auto;}
+
+		li>label{
+			width:100px;
+			display:inline-block;}
+			
+		li>input,li>textarea{
+		 	width:400px;
+		 	height:40px;
+		 	line-height:30px;
+		 	padding:5px;}
+		li>button{
+			padding:8px 12px;
+			border-radius:4px;
+			box-shadow:none;
+			border:none;}
+		li>textarea{height:80px;}
+		
+	ul>li:first-child{
+		height:80px;
+		line-height:80px;}

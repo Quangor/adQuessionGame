@@ -1,0 +1,86 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>小二！上广告</title>
+     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="/css/base.css">
+    <link rel="stylesheet" href="/css/index.css">
+  </head>
+  <body>
+	<div role="index" id="index">
+		 <div>
+		      <p>  大爷我在由"贱人APP"赞助的广告沙龙活动中，荣获<span id="honorTitle"></span>称号！<span id="honorSlogan"></span></p>
+			  <p>贱人APP，全宇宙最贱的APP</p>
+			  <button onclick="game.startGame()">官人，来PK嘛</button>
+		 </div>
+	</div>
+	<div id="game" class="hide">
+		<div class="clock">
+		  <p id="clockCounter"></p>
+		</div>
+		<ul id="quession" class="quessionList">
+	  	 <% for(var i=0; i<data.quessions.length; i++) {%>
+	        <li data-answer= <%= data.quessions[i]._serverData.select %>>
+	           <p><%= i+1 %>.<%= data.quessions[i]._serverData.quession %></p>
+	           <ul class="answerList">
+	              <li onclick="game.selectAnswer(<%= i+1 %>,'A')" > <span>A. </span><%= data.quessions[i]._serverData.answerA %></li>
+	              <li onclick="game.selectAnswer(<%= i+1 %>,'B')" ><span>B. </span><%= data.quessions[i]._serverData.answerB %></li>
+	              <li onclick="game.selectAnswer(<%= i+1 %>,'C')" ><span>C. </span><%= data.quessions[i]._serverData.answerC %></li>
+	              <li onclick="game.selectAnswer(<%= i+1 %>,'D')" ><span>D. </span><%= data.quessions[i]._serverData.answerD %></li>
+	           </ul>
+	        </li>
+	      <% } %>
+	  	</ul>
+	  	<footer class="pageFooter">
+			<div class="brand">
+				<div class="logo">
+					<img src="/images/logo.png">
+				</div>
+				<p class="slogan" style="width: 180px;">见人App客户端<br>大学生都在推荐的脱单App</p>
+			</div>
+			<a id="downloadBtn" class="downLoadButton" href="ios">下载</a>
+		</footer>
+	</div>
+  	
+  	 <script>
+		wx.config({
+		    debug: true,
+		    appId: '<%= data.weixinConfig.appid %>',
+		    timestamp: '<%= data.weixinConfig.timestamp %>',
+		    nonceStr: '<%= data.weixinConfig.nonceStr %>',
+		    signature:' <%= data.weixinConfig.signature %>',
+		    jsApiList: [
+		      // 所有要调用的 API 都要加到这个列表中
+		      'onMenuShareTimeline',
+		      'onMenuShareAppMessage',
+		      'onMenuShareQQ',
+		      'onMenuShareWeibo',
+		      'onMenuShareQZone',
+		    ]
+		  })
+		var shareConfig = {
+	  		  title: 'a',
+			  desc:'b',
+			  link: 'c', // 分享链接
+			  imgUrl: 'd', // 分享图标
+			  success: function () {
+				  // 用户确认分享后执行的回调函数
+			  },
+			  cancel: function () {
+				  // 用户取消分享后执行的回调函数
+			  }
+	  	};
+		
+		wx.ready(function () {
+			  wx.onMenuShareTimeline(shareConfig);
+			  wx.onMenuShareAppMessage(shareConfig);
+			  wx.onMenuShareQQ(shareConfig);
+			  wx.onMenuShareWeibo(shareConfig);
+			  wx.onMenuShareQZone(shareConfig);
+		  });
+	</script>
+  	 <script src="scripts/game.js"></script>
+  	 
+  </body>
+</html>
