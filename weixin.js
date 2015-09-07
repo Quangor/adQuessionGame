@@ -77,7 +77,6 @@ var Weixin = function(){
 		  };
 		  var string = me._raw(ret),
 		      jsSHA = require('jssha');
-		      console.log("signbefore");
 		  var shaObj = new jsSHA(string, 'TEXT');
 		   
 		  ret.signature = shaObj.getHash('SHA-1', 'HEX');
@@ -87,8 +86,8 @@ var Weixin = function(){
 	this.setConfig = function(setSuccess){
 		me._get_access_token(function(accessTaken){
 			me._get_jsapi_ticket(accessTaken,function(jsapi_ticket){
+				console.log(jsapi_ticket);
 				var config = me._sign(jsapi_ticket);
-				
 				setSuccess(config);
 			});
 		});
