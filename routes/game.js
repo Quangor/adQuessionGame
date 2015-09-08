@@ -10,7 +10,7 @@ var getRandom = function(){
 };
 
 router.get('/',function(req,res){
-	var url = (req.headers.host+req.originalUrl).split('#')[0];
+	var url = ('http://' + req.headers.host+req.originalUrl).split('#')[0];
 	weixin.setConfig(url,function(weixinConfig){
 		 var quessionModel = new QuessionModel();
 		 quessionModel.find(function(results){
