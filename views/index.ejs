@@ -60,7 +60,7 @@
 		    ]
 		  })
 		  //<%= data.weixinConfig.jsapi_ticket %>
-		var weiXinReady = functio(config){
+		var weiXinReady = function(config){
 			var shareConfig = config;
 			shareConfig.link = '<%= data.weixinConfig.url %>';
 			shareConfig.success = function(){};
