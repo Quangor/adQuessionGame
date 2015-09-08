@@ -77,6 +77,7 @@ var Weixin = function(){
 		  };
 		  var string = me._raw(ret),
 		      jsSHA = require('jssha');
+		      
 		  var shaObj = new jsSHA(string, 'TEXT');
 		   
 		  ret.signature = shaObj.getHash('SHA-1', 'HEX');
