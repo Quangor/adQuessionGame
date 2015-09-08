@@ -69,7 +69,6 @@ var Weixin = function(){
 	
 	this._sign = function (jsapi_ticket,url) {
 		  var ret = {
-		  	appid:wechat_config.appid,
 		    jsapi_ticket: jsapi_ticket,
 		    nonceStr: me._createNonceStr(),
 		    timestamp: me._createTimestamp(),
@@ -77,10 +76,10 @@ var Weixin = function(){
 		  };
 		  var string = me._raw(ret),
 		      jsSHA = require('jssha');
-		      
 		  var shaObj = new jsSHA(string, 'TEXT');
 		   
 		  ret.signature = shaObj.getHash('SHA-1', 'HEX');
+		  ret.appid = wechat_config.appid;
 		  return ret;
 	};
 	
