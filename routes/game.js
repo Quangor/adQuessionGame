@@ -10,8 +10,8 @@ var getRandom = function(){
 };
 
 router.get('/',function(req,res){
-	weixin.setConfig(function(weixinConfig){
-		
+	var url = (req.headers.host+req.originalUrl).split('#')[0];
+	weixin.setConfig(url,function(weixinConfig){
 		 var quessionModel = new QuessionModel();
 		 quessionModel.find(function(results){
 		 	var newResult = [];
