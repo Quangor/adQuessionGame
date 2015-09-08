@@ -67,13 +67,13 @@ var Weixin = function(){
 		  return string;
 	};
 	
-	this._sign = function (jsapi_ticket) {
+	this._sign = function (jsapi_ticket,url) {
 		  var ret = {
 		  	appid:wechat_config.appid,
 		    jsapi_ticket: jsapi_ticket,
 		    nonceStr: me._createNonceStr(),
 		    timestamp: me._createTimestamp(),
-		    url: wechat_config.url
+		    url: url
 		  };
 		  var string = me._raw(ret),
 		      jsSHA = require('jssha');
@@ -84,11 +84,11 @@ var Weixin = function(){
 		  return ret;
 	};
 	
-	this.setConfig = function(setSuccess){
+	this.setConfig = function(url,setSuccess){
 		me._get_access_token(function(accessTaken){
 			me._get_jsapi_ticket(accessTaken,function(jsapi_ticket){
 				console.log(jsapi_ticket);
-				var config = me._sign(jsapi_ticket);
+				var config = me._sign(jsapi_ticket,url);
 				setSuccess(config);
 			});
 		});
