@@ -42,6 +42,7 @@ var Honor = function(){
 	
 	this.createHonorRank = function(){
 		this.honorRank = parseInt(location.href.split("?")[1].split("=")[1]);
+		this.honor = this.honors[this.honorRank];
 	};
 	
 	this.renderHonor = function(){
@@ -138,7 +139,11 @@ var honor = new Honor();
 
 honor.createHonorRank();
 honor.renderHonor();
-
+weiXinReady({
+	title:'大爷我在由"贱人APP"赞助的广告沙龙活动中，荣获'+honor.honor.title+'称号！',
+	desc:honor.honor.slogan,
+	imgUrl:''
+});
 
 
 
