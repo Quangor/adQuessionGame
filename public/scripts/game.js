@@ -140,8 +140,8 @@ var honor = new Honor();
 honor.createHonorRank();
 honor.renderHonor();
 weiXinReady({
-	title:'大爷我在由"贱人APP"赞助的广告沙龙活动中，荣获'+honor.honor.title+'称号！',
-	desc:honor.honor.slogan,
+	title:honor.honor.slogan,
+	desc:'大爷我在由"贱人APP"赞助的广告沙龙活动中，荣获'+honor.honor.title+'称号！',
 	imgUrl:''
 });
 
